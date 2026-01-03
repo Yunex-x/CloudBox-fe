@@ -94,11 +94,11 @@ export default function Footer() {
             <hr className="w-32 border-gray-700" />
 
             <select className="w-fit rounded-md border border-gray-600 bg-black px-2 py-1 text-sm text-white">
-              <option>English</option>
-              <option>Spanish</option>
-              <option>French</option>
-              <option>German</option>
-              <option>Chinese</option>
+              <option value="en">English</option>
+              <option value="en">Spanish</option>  
+              <option value="en">French</option>
+              <option value="en">German</option>
+              <option value="en">Chinese</option>
             </select>
           </div>
         </div>
