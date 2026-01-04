@@ -100,7 +100,7 @@ export default function Preview() {
           storage—so your team can stay focused on their work.
         </p>
 
-        <div className="md:flex md:gap-6 justify-center md:items-center text-2xl">
+        <div className="md:flex md:gap-6 justify-center items-center md:items-center text-xs lg:text-lg">
           <div className="mt-4 flex justify-center">
             <LearnMoreButton />
           </div>
@@ -111,7 +111,7 @@ export default function Preview() {
               className="mt-6 inline-flex items-center gap-2 underline"
             >
               Get started free
-              <ArrowRight className="w-4" />
+              <ArrowRight className="w-4 flex " />
             </Link>
           </div>
 

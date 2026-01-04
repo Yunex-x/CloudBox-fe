@@ -101,17 +101,17 @@ export default function Sharing() {
           your team and partners connected for seamless collaboration.
         </p>
 
-        <div className="md:flex md:items-center md:gap-6 text-2xl">
+        <div className="md:flex md:items-center  md:gap-6 text-xs md:text-lg">
           <div className="mt-4">
             <LearnMoreButton />
           </div>
 
           <Link
             href="./signup"
-            className="mt-6 inline-flex items-center gap-2 underline"
+            className="mt-6 inline-flex items-center ml-4 gap-2 underline"
           >
             Get started free
-            <ArrowRight className="w-4" />
+            <ArrowRight className="w-4 flex" />
           </Link>
         </div>
       </div>
