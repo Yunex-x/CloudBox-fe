@@ -8,7 +8,13 @@ export default function Header() {
       {/* LEFT: Logo + Desktop Nav */}
       <div className="flex items-center gap-8">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Logo" width={60} height={40} />
+<Image
+  src="/logo.png"
+  alt="Logo"
+  width={60}
+  height={40}
+  className="h-auto"
+/>
         </Link>
 
         {/* Desktop navigation */}
@@ -37,7 +43,7 @@ export default function Header() {
       </div>
 
       {/* RIGHT: Actions */}
-      <div className="flex items-center gap-4 text-sm">
+      <div className="flex items-center gap-4 text-sm ">
         {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-4">
           <Globe className="h-4 w-4" />
@@ -53,7 +59,7 @@ export default function Header() {
 
           <Link
             href="./signup"
-            className="rounded-full bg-blue-600 px-4 py-2 text-white text-lg hover:bg-blue-700"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-white text-lg hover:bg-blue-700"
           >
             Get started
           </Link>

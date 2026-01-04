@@ -8,7 +8,7 @@ export default function Footer() {
         {/* Column 1 */}
         <ul className="flex flex-col gap-3">
           <li className="mb-3 text-lg font-semibold">CloudBox</li>
-          <li><a href="#" className="hover:underline">Desktop app</a></li>
+          <li><a href="#" className="hover:underline ">Desktop app</a></li>
           <li><a href="#" className="hover:underline">Mobile app</a></li>
           <li><a href="#" className="hover:underline">Integrations</a></li>
           <li><a href="#" className="hover:underline">Features</a></li>

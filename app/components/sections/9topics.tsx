@@ -1,12 +1,22 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import TopicCard from "../reusable ui/TopicCard";
 import Link from "next/link";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function TopicsSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+
   const TOPICS = [
     {
       id: "collaboration",
       image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop",
       title: "Collaboration",
       description: "Learn how to collaborate effectively with your team.",
       href: "#",
@@ -14,7 +24,7 @@ export default function TopicsSection() {
     {
       id: "security",
       image:
-        "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?q=80&w=1170&auto=format&fit=crop",
       title: "Security",
       description: "Learn how to keep your data secure.",
       href: "#",
@@ -22,16 +32,40 @@ export default function TopicsSection() {
     {
       id: "productivity",
       image:
-        "https://images.unsplash.com/photo-1507099985932-87a4520ed1d5?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZHVjdGl2aXR5fGVufDB8fDB8fHwy",
+        "https://images.unsplash.com/photo-1507099985932-87a4520ed1d5?w=1000&auto=format&fit=crop&q=60",
       title: "Productivity",
       description: "Learn how to improve your productivity.",
       href: "#",
     },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(
+        cardsRef.current ? Array.from(cardsRef.current.children) : [],
+        {
+          opacity: 0,
+          y: 80,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 80%",
+            end: "top 40%",
+            scrub: 3,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="px-5 py-12">
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-3">
+    <section ref={sectionRef} className="px-5 py-12">
+      <div
+        ref={cardsRef}
+        className="grid gap-6 sm:grid-cols-1 md:grid-cols-3"
+      >
         {TOPICS.map((item) => (
           <TopicCard
             key={item.id}

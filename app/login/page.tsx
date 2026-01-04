@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { login } from "../services/auth.service";
 import Link from "next/link";
-import Header from "../components/layout/header";
+import Image from "next/image";
 import Footer from "../components/layout/footer";
-import { KeySquare, Mail, UserLock } from "lucide-react";
+import { Globe, KeySquare, Mail, Menu, UserLock } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -39,15 +39,49 @@ const router = useRouter();
 };
     return (
         <>
-            <Header />
+    <nav className="flex items-center justify-between border-b border-gray-200 bg-white px-4 py-2">
+      {/* LEFT: Logo + Desktop Nav */}
+      <div className="flex items-center gap-8">
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/logo.png" alt="Logo" width={60} height={40} />
+        </Link>
 
+        {/* Desktop navigation */}
+        <ul className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <li>
+            <Link href="#" className="hover:underline">
+              Products
+            </Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:underline">
+              Solutions
+            </Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:underline">
+              Enterprise
+            </Link>
+          </li>
+          <li>
+            <Link href="#" className="hover:underline">
+              Pricing
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+                 <Globe className="h-4 w-4" />
+
+    </nav>
+        
             <main className="flex min-h-[80vh] items-center justify-center bg-stone-200 px-4">
                 <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
 
                     {/* Title */}
                     <div className="mb-6 flex items-center gap-2">
                         <UserLock className="h-8 w-8 text-blue-600" />
-                        <h1 className="text-2xl font-serif font-semibold">Log in</h1>
+                        <h1 className="text-2xl font-outfit font-semibold">Log in</h1>
                     </div>
 
                     {/* Form */}

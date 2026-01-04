@@ -1,6 +1,17 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import UseCaseCard from "../reusable ui/UseCaseCard";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Solutions() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+
   const USE_CASES = [
     {
       id: "construction",
@@ -46,13 +57,56 @@ export default function Solutions() {
     },
   ];
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1️⃣ Title animation
+      gsap.from(titleRef.current, {
+        opacity: 0,
+        y: 50,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 75%",
+          end: "top 65%",
+          scrub: 3,
+        },
+      });
+
+      // 2️⃣ Cards animation (stagger)
+      gsap.from(
+        cardsRef.current ? Array.from(cardsRef.current.children) : [],
+        {
+          opacity: 0,
+          y: 100,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 75%",
+            end: "top 40%",
+            scrub: 1,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="flex flex-col gap-12 px-5 py-16 sm:px-6 md:px-12 lg:px-24">
-      <h2 className="text-center text-2xl sm:text-3xl md:text-5xl font-semibold">
+    <section
+      ref={sectionRef}
+      className="flex flex-col gap-12 px-5 py-16 sm:px-6 md:px-12 lg:px-24"
+    >
+      <h2
+        ref={titleRef}
+        className="text-center text-2xl sm:text-3xl md:text-5xl font-semibold"
+      >
         Solutions for every team
       </h2>
 
-      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+      <div
+        ref={cardsRef}
+        className="grid gap-6 sm:grid-cols-1 md:grid-cols-2"
+      >
         {USE_CASES.map((item) => (
           <UseCaseCard
             key={item.id}
