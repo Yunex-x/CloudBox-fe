@@ -37,7 +37,7 @@ export default function LoginPage() {
   return (
     <>
       {/* Header with matching light/blue styling */}
-      <nav className="flex items-center justify-between border-b border-blue-200/70 bg-white/85 px-4 py-2 shadow-md shadow-blue-500/20 backdrop-blur">
+        <nav className="flex items-center justify-between border-b border-blue-200/70 bg-white/85 px-4 py-2 shadow-md shadow-blue-500/20 backdrop-blur">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.png" alt="Logo" width={60} height={40} className="h-auto" />
