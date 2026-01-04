@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-black px-5 py-12 text-white">
-      <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+      <div className="mx-auto grid grid-cols-2 max-w-7xl gap-8  md:grid-cols-3 lg:grid-cols-6">
         {/* Column 1 */}
         <ul className="flex flex-col gap-3">
           <li className="mb-3 text-lg font-semibold">CloudBox</li>
@@ -95,7 +95,7 @@ export default function Footer() {
 
             <select className="w-fit rounded-md border border-gray-600 bg-black px-2 py-1 text-sm text-white">
               <option value="en">English</option>
-              <option value="en">Spanish</option>  
+              <option value="en">Spanish</option>
               <option value="en">French</option>
               <option value="en">German</option>
               <option value="en">Chinese</option>
